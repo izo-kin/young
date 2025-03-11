@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylized Centered Content</title>
+    <link rel="stylesheet" href="style.css">
+
+
+  <!-- jQuery (Include only once, before plugins that depend on it) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Slick Carousel CSS & JS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+<!-- Bootstrap CSS (Include only once) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+
+<!-- AOS for Animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<!-- Lightbox2 CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+
+<!-- Custom Styles -->
+<link href="csst/style.css" rel="stylesheet">
+
+
+
+</head>
+<body style="background-color:rgb(255, 255, 255);">
+
+    <section id="home">
+    <div class="screen-container">
+        <div class="overlay-top">
+            <h1 class="wel">We Care!</h1>
+        </div>
+        <div class="screen narrow left"><img class="gif side-gif" src="afric.jpg" alt="Side GIF"></div>
+        <div class="screen narrow left"><img class="gif side-gif" src="happy.jpeg" alt="Side GIF"></div>
+        <div class="screen main">
+            <video class="video main-video" autoplay loop muted></video>
+        </div>
+        
+        <div class="screen narrow right"><img class="gif side-gif" src="happy.jpeg" alt="Side GIF"></div>
+        <div class="screen narrow right"><img class="gif side-gif" src="afric.jpg" alt="Side GIF"></div>
+    </div>
+</section>
+    
+<!-- Toggle Button (Only Visible on Small Screens) -->
+<button id="helpToggle" class="toggle-btn fixed top-4 right-4 bg-blue-500 text-white p-3 rounded-full shadow-lg z-50 block lg:hidden">
+    ☰
+</button>
+
+<!-- Help Section (Visible on Large Screens, Hidden on Small Screens) -->
+<div id="helpSection" class="help-section fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg hidden text-center bg-gray-800 text-white p-4 shadow-lg">
+    <a href="#home" class="help-btn btn1 block p-2">Home</a>
+    <a href="donate.html" class="help-btn btn1 block p-2">Donate</a>
+    <a href="#cause" class="help-btn btn2 block p-2">Causes</a>
+    <a href="#about2" class="help-btn btn3 block p-2">About</a>
+    <a href="#faq" class="help-btn btn4 block p-2">FAQ</a>
+    <a href="#team-preview" class="help-btn btn5 block p-2">Team</a>
+    <a href="#why-choose-us" class="help-btn btn6 block p-2">Why Us</a>
+    <a href="#support" class="help-btn btn7 block p-2">Support</a>
+    <a href="#contact" class="help-btn btn8 block p-2">Contact Us</a>
+    <a href="#media" class="help-btn btn8 block p-2">Media</a>
+</div>
+
+<!-- JavaScript for Toggle Button -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const helpSection = document.getElementById("helpSection");
+    const helpToggle = document.getElementById("helpToggle");
+
+    if (helpSection && helpToggle) {
+        // Ensure help section is always visible on large screens
+        if (window.innerWidth >= 1024) { 
+            helpSection.classList.remove("hidden");
+        }
+
+        helpToggle.addEventListener("click", function () {
+            helpSection.classList.toggle("hidden");
+        });
+    }
+});
+</script>
+
+<style>
+/* Show Help Section Always on Large Screens */
+@media (min-width: 1024px) {
+    #helpSection {
+        display: block !important;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #eb9019;
+        padding: 1rem;
+        text-align: center;
+        z-index: 50;
+    }
+    #helpSection a {
+        color: white;
+        font-weight: bold;
+        font-size: 1rem;
+    }
+    .toggle-btn {
+        display: none !important;
+    }
+}
+
+/* Hide Help Section Initially on Small Screens */
+@media (max-width: 1023px) {
+    #helpSection {
+        display: none;
+        position: fixed;
+        top: 60px;
+        right: 10px;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        z-index: 50;
+    }
+    
+    /* Ensure Toggle Button is Visible */
+    .toggle-btn {
+        display: block !important;
+        position: fixed;
+        top: 20px;
+        right: 14px;
+        background-color: #000;
+        color: white;
+        padding: 10px 15px;
+        font-size: 1.5rem;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Smooth Animation for Showing/Hiding Help Section */
+.hidden {
+    display: none !important;
+}
+</style>
+
+    
+
+<!-- About Section -->
+<section id="about1" class="contentx">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6" data-aos="fade-right">
+                <img src="young.png" alt="Logo" class="logo">
+            <h1 class="logo-text">Young Support Foundation Ug</h1>
+                <p>We are a non-profit organization dedicated to providing education, food, and healthcare to children in need.</p>
+            </div>
+            <div class="col-md-5 text-center floating-container len">
+                <img src="det.jpg" alt="Kids" class="floating styled-img">
+                <a id="but" href="donate.html" class="donate-btn">Donate</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="about2">
+ <!-- About 2 Start -->
+ <div class="about">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="about-img" data-parallax="scroll" data-image-src="pic3.jpg" style="width: 500px; height: 250px;"></div>
+            </div>
+            <!-- Slick Carousel & Other JS Scripts should go at the bottom for better performance -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax.js/1.5.0/parallax.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.about-img').parallax({imageSrc: 'pic3.jpg'});
+    });
+</script>
+
+            <div class="col-lg-6">
+                <div class="section-header">
+                    <p id="jay">Learn About Us</p>
+                    <h2 id="jy">You are welcome to join us!</h2>
+                </div>
+                <div class="about-tab">
+                    <ul class="nav nav-pills nav-justified">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="pill" href="#tab-content-1">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="pill" href="#tab-content-2">Mission</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="pill" href="#tab-content-3">Vision</a>
+                        </li>
+                    </ul>
+                
+                    <div class="tab-content">
+                        <div id="tab-content-1" class="container tab-pane active" style="color: rgb(75, 80, 85);">
+                            <p id="hok">
+                                A charitable organization focused on empowering vulnerable children in underserved communities. Through mentorship, educational resources, and opportunities, we help children lead successful lives. We believe that every child deserves the chance to thrive, regardless of their circumstances.
+                            </p>
+                        </div>
+                        <div id="tab-content-2" class="container tab-pane fade" style="color: rgb(75, 80, 85);">
+                            <p id="hok">
+                                Our mission is to uplift disadvantaged children by providing support, education, and resources to help them succeed.
+                        </div>
+                        <div id="tab-content-3" class="container tab-pane fade" style="color: rgb(75, 80, 85);">
+                            <p id="hok">
+                                Our vision is to create a world where all children have the chance to succeed.
+                            </p>
+                        </div>
+                    </div>
+                </div>               
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About 2 End -->
+</section>
+
+<!--jumbled gallery-->
+<div class="jumbled-gallery" id="gallery"></div>
+    <script>
+        const images = [
+            'det.jpg',
+            'happy.jpeg',
+            'cul.jpg',
+            'hope.jpg',
+            'tog.jpg',
+            'chil.jpg'
+        ];
+
+        const gallery = document.getElementById('gallery');
+        
+        function generateImages() {
+            gallery.innerHTML = '';
+            images.forEach(src => {
+                const imgElement = document.createElement('img');
+                imgElement.src = src;
+                imgElement.style.top = `${Math.random() * 30 - 15}px`;
+                gallery.appendChild(imgElement);
+            });
+        }
+        
+        generateImages();
+        setInterval(generateImages, 3000);
+    </script>
+
+<section id="why-choose-us">
+    <h2>Why Choose Us?</h2>
+    <div class="grid-container">
+        <div class="card">
+            <h3>Trusted Organization</h3>
+            <p>We have years of experience in making a difference in people's lives.</p>
+        </div>
+        <div class="card">
+            <h3>Transparency</h3>
+            <p>Every donation goes directly to the cause, ensuring full accountability.</p>
+        </div>
+        <div class="card">
+            <h3>Community Impact</h3>
+            <p>We work closely with communities to create lasting positive change.</p>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+<section id="cause">
+       <!-- Causes Start -->
+<div class="causes">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2 id="hak">Our Causes</h2>
+            
+        </div>  
+
+        <div class="carousel-container">                  
+            <div class="owl-carousel causes-carousel">
+
+                <!-- Education -->
+                <div class="causes-item">
+                    <div class="causes-img">
+                        <img src="read.jpg" alt="Education">
+                    </div>
+                    <div class="causes-progress">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                <span>85%</span>
+                            </div>
+                        </div>
+                        <div class="progress-text">
+                            <p id="hek"><strong>Raised:</strong> $10,000</p>
+                            <p id="hek"><strong>Goal:</strong> $50,000</p>
+                        </div>
+                    </div>
+                    <div class="causes-text">
+                        <h3>Child Education</h3>
+                        <p id="hek">Providing access to quality education, school supplies, and learning facilities for underprivileged children.</p>
+                    </div>
+                    <div class="causes-btn">
+                        <a class="btn btn-custom">Learn More</a>
+                        <a class="btn btn-custom">Donate Now</a>
+                    </div>
+                </div>
+
+                <!-- Health -->
+                <div class="causes-item">
+                    <div class="causes-img">
+                        <img src="doc.jpg" alt="Health">
+                    </div>
+                    <div class="causes-progress">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
+                                <span>55%</span>
+                            </div>
+                        </div>
+                        <div class="progress-text">
+                            <p id="hek"><strong>Raised:</strong> $10,000</p>
+                            <p id="hek"><strong>Goal:</strong> $50,000</p>
+                        </div>
+                    </div>
+                    <div class="causes-text">
+                        <h3>Healthcare Access</h3>
+                        <p id="hek">Providing medical aid, vaccinations, and maternal care to improve the health of vulnerable children and families.</p>
+                    </div>
+                    <div class="causes-btn">
+                        <a class="btn btn-custom">Learn More</a>
+                        <a class="btn btn-custom">Donate Now</a>
+                    </div>
+                </div>
+
+                <!-- Shelter -->
+                <div class="causes-item">
+                    <div class="causes-img">
+                        <img src="sleep.jpg" alt="Shelter">
+                    </div>
+                    <div class="causes-progress">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                <span>25%</span>
+                            </div>
+                        </div>
+                        <div class="progress-text">
+                            <p id="hek"><strong>Raised:</strong> $10,000</p>
+                            <p id="hek"><strong>Goal:</strong> $50,000</p>
+                        </div>
+                    </div>
+                    <div class="causes-text">
+                        <h3>Safe Shelter</h3>
+                        <p id="hek">Building homes and safe spaces for orphaned and homeless children, ensuring security and stability.</p>
+                    </div>
+                    <div class="causes-btn">
+                        <a class="btn btn-custom">Learn More</a>
+                        <a class="btn btn-custom">Donate Now</a>
+                    </div>
+                </div>
+
+                <!-- Clean Water -->
+                <div class="causes-item">
+                    <div class="causes-img">
+                        <img src="water.jpg" alt="Clean Water">
+                    </div>
+                    <div class="causes-progress">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                <span>85%</span>
+                            </div>
+                        </div>
+                        <div class="progress-text">
+                            <p id="hek"><strong>Raised:</strong> $100,000</p>
+                            <p id="hek"><strong>Goal:</strong> $50,000</p>
+                        </div>
+                    </div>
+                    <div class="causes-text">
+                        <h3>Clean Water</h3>
+                        <p id="hek">Installing wells and water purification systems to provide clean drinking water in underserved communities.</p>
+                    </div>
+                    <div class="causes-btn">
+                        <a class="btn btn-custom">Learn More</a>
+                        <a class="btn btn-custom">Donate Now</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Causes End -->
+</section>
+
+<section id="media">
+<div class="containex">
+    <!-- Left-Aligned Semi-Circle Navbar -->
+    <div class="navb">
+        <button class="nav-btn active" onclick="showContent('videos')">🎥 Media</button>
+        <!--<button class="nav-btn" onclick="showContent('gallery')">🖼️ Gallery</button>-->
+        <button class="nav-btn" onclick="showContent('donate')">💰 Donate</button>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+       <!-- <div id="gallery" class="content-box hidden">
+            <h2 id="ops">Image Gallery</h2>
+            <div class="gallery">
+                <img src="img/event-2.jpg" alt="Gallery Image" onclick="openLightbox(this)">
+                <img src="img/kido.jpg" alt="Gallery Image" onclick="openLightbox(this)">
+                <img src="img/unif.jpg" alt="Gallery Image" onclick="openLightbox(this)">
+                <img src="img/unif2.jpg" alt="Gallery Image" onclick="openLightbox(this)">
+                <img src="porri.jpg" alt="Gallery Image" onclick="openLightbox(this)">
+                <img src="cul.jpg" alt="Gallery Image" onclick="openLightbox(this)">
+            </div>
+        </div>-->
+        <!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox">
+<span class="close" onclick="closeLightbox()">&times;</span>
+<img id="lightbox-img">
+</div>
+
+        <div id="videos" class="content-box">
+            <video controls>
+                <source src="aid.mp4" type="video/mp4">
+            </video>
+            
+        </div>
+
+        <div id="donate" class="content-box hidden">
+            <h2 id="ops">Support Our Cause</h2>
+            <p id="eps">Choose your donation level and make an impact today!</p>
+        
+            <div class="donation-container">
+                <!-- Standard Donation Card -->
+                <div class="donation-card">
+                    <h3>🌟 Standard</h3>
+                    <p>Make a meaningful contribution to support our mission.</p>
+                    <h4>$10</h4>
+                    <button class="donate-btn" onclick="donate(10)">Donate</button>
+                </div>
+        
+                <!-- Super Hero Donation Card -->
+                <div class="donation-card heroc">
+                    <h3>🦸 Super Hero</h3>
+                    <p>Your generous gift helps us reach even more people in need.</p>
+                    <h4>$50</h4>
+                    <button class="donate-btn" onclick="donate(50)">Donate</button>
+                </div>
+        
+                <!-- Champion Donation Card -->
+                <div class="donation-card champion">
+                    <h3>🏆 Champion</h3>
+                    <p>Be a game-changer and empower communities with your support.</p>
+                    <h4>$100</h4>
+                    <button class="donate-btn" onclick="donate(100)">Donate</button>
+                </div>
+            </div>
+        
+            <form id="custom-donation-form">
+                <h3>💖 Custom Donation</h3>
+                <label>Name:</label>
+                <input type="text" required placeholder="Enter your name">
+                
+                <label>Amount ($):</label>
+                <input type="number" required placeholder="Enter custom amount">
+                
+                <button type="submit" class="donate-btn">Donate Custom</button>
+            </form>
+        </div>
+        
+    </div>
+</div>
+</section>
+
+<!-- Fun Events Section -->
+<div class="fun-section">
+    <!-- Event Details -->
+    <div class="event-info">
+        <h2>Exciting Fun Always!</h2>
+        <p>
+            Join us for an unforgettable experience filled with joy, laughter, and impactful activities. 
+            Whether it's charity drives, community events, or fun-filled gatherings, there's something for 
+            everyone. Be a part of the excitement, make new connections, and help create a positive impact!
+        </p>
+        <a href="#" class="btn-custom">Learn More</a>
+        </div>        
+
+    <!-- Folder-Shaped Image -->
+    <div class="folder-wrapper">
+        <div class="folder-border"></div>
+        <div class="folder-shape">
+            <img src="tog.jpg" alt="Fun Event">
+        </div>
+    </div>
+</div>
+
+
+ <!-- Our Team Section -->
+ <section id="team-preview" class="team-preview">
+    <h2 id="hik">Meet Our Team</h2>
+    <div class="executive-team">
+        <div class="team-member">
+            <img src="kal.jpg" alt="CEO">
+            <h3>Kalisa Isaac</h3>
+            <p>Chief Executive Officer</p>
+        </div>
+        <div class="team-member">
+            <img src="izo.jpg" alt="CFO">
+            <h3>Musasizi Isaac</h3>
+            <p>Chief Financial Officer</p>
+        </div>
+        <div class="team-member">
+            <img src="iryn.jpg" alt="CFO">
+            <h3>Mugabi Rose</h3>
+            <p>Chief Financial Officer</p>
+        </div>
+       
+        
+    </div>
+    <a href="team.html" class="see-more-btn">See More</a>
+</section>
+
+
+
+<section id="small-screen-section" class="p-4">
+    <!-- Video Section -->
+    <div class="mb-4">
+        <h2 id="hpk" class="font-bold mb-2">Watch Us</h2>
+        <video class="w-full rounded-0" controls>
+            <source src="vid 2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <!-- Image Gallery -->
+    <div class="mb-4">
+        <h2 id="hpk" class="font-bold mb-2">Moments</h2>
+        <div class="flex overflow-x-auto space-x-2">
+            <a href="cul.jpg" data-lightbox="gallery">
+                <img src="cul.jpg" class="w-1/3 rounded-lg shadow-md">
+            </a>
+            <a href="food.jpg" data-lightbox="gallery">
+                <img src="food.jpg" class="w-1/3 rounded-lg shadow-md">
+            </a>
+            <a href="read.jpg" data-lightbox="gallery">
+                <img src="read.jpg" class="w-1/3 rounded-lg shadow-md">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,  // Allows cycling through images
+            'alwaysShowNavOnTouchDevices': true
+        });
+    </script>
+    
+    
+    <!-- Donation Section -->
+    <div class="p-2 bg-white rounded-lg shadow-md eh">
+        <h2 id="hak" class="font-bold mb-2">Support Our Cause</h2>
+        <div class="space-y-2">
+            <button class="w-full py-2 bg-primary text-white rounded-lg">Donate $5</button>
+            <button class="w-full py-2 bg-warning text-white rounded-lg">Donate $10</button>
+            <button class="w-full py-2 bg-success text-white rounded-lg">Donate $20</button>
+            <button class="w-full py-2 bg-red text-dark rounded-lg">Donate Custom</button>
+        </div>
+    </div>
+</section>
+
+<!-- Event Start -->
+<div class="event">
+    <div class="container">
+        <div class="section-header text-center">
+            <p id="hak">Upcoming Events</p>
+            <h2 id="hok">
+                From fundraising drives to community outreach, 
+                every moment counts in transforming lives. Stay tuned and be a changemaker!
+            </h2>
+        </div>        
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="event-item">
+                    <img src="ath.jpg" alt="Image">
+                    <div class="event-content">
+                        <div class="event-meta">
+                            <p id="hyk"><i class="fa fa-calendar-alt"></i>01-Jan-45</p>
+                            <p id="hyk"><i class="far fa-clock"></i>8:00 - 10:00</p>
+                            <p id="hyk"><i class="fa fa-map-marker-alt"></i>Uganda</p>
+                        </div>
+                        <div class="event-text">
+                            <h3 id="hsk">Upcoming Sports Events</h3>
+                            <p id="hyk">
+                                Get ready for thrilling sports events, fierce competition, and unforgettable moments!
+                            </p>
+                            
+                            <a  id="hyk"class="btn btn-custom" href="">Join Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="event-item">
+                    <img src="tour.jpg" alt="Image">
+                    <div class="event-content">
+                        <div class="event-meta">
+                            <p id="hyk"><i class="fa fa-calendar-alt"></i>01-Jan-45</p>
+                            <p id="hyk"><i class="far fa-clock"></i>8:00 - 10:00</p>
+                            <p id="hyk"><i class="fa fa-map-marker-alt"></i>Uganda</p>
+                        </div>
+                        <div class="event-text">
+                            <h3 id="hsk">Explore the Beauty of Uganda</h3>
+                            <p id="hyk">
+                                Discover breathtaking landscapes, lush national parks, and vibrant cultures.
+                            </p>
+                            
+                            <a id="hyk" class="btn btn-custom" href="">Join Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="event-item">
+                    <img src="ath.jpg" alt="Image">
+                    <div class="event-content">
+                        <div class="event-meta">
+                            <p id="hyk"><i class="fa fa-calendar-alt"></i>01-Jan-45</p>
+                            <p id="hyk"><i class="far fa-clock"></i>8:00 - 10:00</p>
+                            <p id="hyk"><i class="fa fa-map-marker-alt"></i>Uganda</p>
+                        </div>
+                        <div class="event-text">
+                            <h3 id="hsk">Upcoming Sports Events</h3>
+                            <p id="hyk">
+                                Get ready for thrilling sports events, fierce competition, and unforgettable moments!
+                            </p>
+                            
+                            <a  id="hyk"class="btn btn-custom" href="">Join Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Event End -->
+
+<!--
+<div class="vital-info">
+    <img src="water.jpg" alt="Donate" class="vital-img">
+    <p>⚠️ Important Notice: Due to ongoing challenges, urgent assistance is needed for starving children in Karamoja. 
+    Your support can save lives. Donate today!</p>
+    <a href="donate.html" class="donate-btn">Donate</a>
+</div>
+
+<style>
+.vital-info {
+    background-color: #e4352f; /* Red background */
+    color: white; /* White text */
+    padding: 25px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+
+}
+.vital-info p{
+    position: relative;
+    top: 3.5vh;
+}
+
+/* Small Image on Left */
+.vital-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* Donate Button on Right */
+.donate-btn {
+    background-color: white;
+    color: #e4352f;
+    padding: 2px 35px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.donate-btn:hover {
+    background-color: #fff5f5;
+}
+
+/* Responsive: Stack on small screens */
+@media (max-width: 600px) {
+    .vital-info {
+        font-size: 16px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .vital-img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .donate-btn {
+        margin-top: 10px;
+    }
+}
+</style>
+-->
+
+<section id="support">
+<!--items-->
+<h1 id="item1">Support Needy Children</h1>
+    <p id="item2">Select a category to view items needed and click on it to support.</p>
+
+    <!-- Categories -->
+    <div class="categories">
+        <div class="category" onclick="showItems('scholastic')">📚 Scholastic</div>
+        <div class="category" onclick="showItems('food')">🍲 Food</div>
+        <div class="category" onclick="showItems('clothes')">👕 Clothes</div>
+        <div class="category" onclick="showItems('shoes')">👟 Shoes</div>
+    </div>
+
+    <!-- Items Section -->
+    <div class="items-container" id="itemsContainer"></div>
+
+    <!-- Donation Form -->
+    <div class="overlay" id="overlay" onclick="closeForm()"></div>
+    <div class="donation-form" id="donationForm">
+        <h2 id="formTitle">Donate for Item</h2>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" min="1" value="1">
+
+        <label for="amount">Amount (USD per item):</label>
+        <input type="text" id="amount" readonly>
+
+        <button onclick="submitDonation()">Donate Now</button>
+    </div>
+</section>
+
+    <!-- New Section: Success Stories -->
+<section class="success-stories">
+    <h2 id="un">Success Stories</h2>
+    <p id="hyk">See how your donations have made a difference in the lives of children.</p>
+    
+    <div class="stories-container">
+        <div class="story">
+            <img src="oh.jpg" alt="Happy Child">
+            <p id="hyk">Thanks to your support, Maria received school supplies and is now excelling in her studies!</p>
+        </div>
+        <div class="story">
+            <img src="thum.jpg" alt="Child with food">
+            <p id="hyk">Joan and her siblings now have access to regular meals, thanks to generous donors like you.</p>
+        </div>
+    </div>
+</section>
+    
+
+<!-- Blog Start -->
+<div class="blog">
+    <div class="container">
+        <div class="section-header text-center">
+            <p>Our Blog</p>
+            <h2>Latest news & articles directly from our blog</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="blog-item">
+                    <div class="blog-img">
+                        <img src="img/kido.jpg" alt="Starving Children in Karamoja">
+                    </div>
+                    <div class="blog-text">
+                        <h3><a href="#">Starving Children in Karamoja: A Growing Crisis</a></h3>
+                        <p id="hok">
+                            The region of Karamoja is facing a severe hunger crisis, with children suffering from malnutrition and starvation. 
+                            Drought and food shortages have left many families struggling to feed their young ones, leading to an alarming increase 
+                            in child mortality rates. Urgent humanitarian assistance is needed to provide food, medical care, and support to those in need.
+                        </p>
+                    </div>
+                    <div class="blog-meta">
+                        <p><i class="fa fa-user"></i><a id="ah" href="">Isaac</a></p>
+                        <p><i class="fa fa-comments"></i><a id="ah" href="">Comment</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog-item">
+                    <div class="blog-img">
+                        <img src="whit.jpeg" alt="Children Welfare">
+                    </div>
+                    <div class="blog-text">
+                        <h3><a href="#">Promoting Children's Welfare: A Call to Action</a></h3>
+                        <p id="hok">
+                            Every child deserves access to healthcare, education, and a safe environment. Many underprivileged children are 
+                            deprived of basic rights, leaving them vulnerable to abuse, neglect, and poverty. Organizations and communities 
+                            must work together to ensure that every child has the opportunity to grow up in a nurturing and supportive setting.
+                        </p>
+                    </div>
+                    <div class="blog-meta">
+                        <p><i class="fa fa-user"></i><a id="ah" href="">Isaac</a></p>
+                        <p><i class="fa fa-comments"></i><a id="ah" href="">Comment</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog-item">
+                    <div class="blog-img">
+                        <img src="img/unif2.jpg" alt="Home for Orphans">
+                    </div>
+                    <div class="blog-text">
+                        <h3><a href="#">Providing a Loving Home for Orphans</a></h3>
+                        <p id="hok">
+                            Orphaned children face many challenges, from lack of shelter to emotional distress. Establishing safe homes for 
+                            these children ensures they receive proper care, education, and emotional support. With the help of generous donors 
+                            and compassionate caregivers, we can provide these children with a brighter future.
+                        </p>
+                    </div>
+                    <div class="blog-meta">
+                        <p><i class="fa fa-user"></i><a id="ah" href="">Irene</a></p>
+                        <p><i class="fa fa-comments"></i><a id="ah" href="">Comment</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section id="faq">
+<!-- FAQ Section -->
+<div class="faq-container">
+
+    <!-- FAQ Content -->
+<div class="faq-content">
+    <h2 class="kol">Frequently Asked Questions</h2>
+
+    <div class="accordion" id="faqAccordion">
+        <!-- Question 1 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                    What does your charity do?
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Our charity focuses on providing education, healthcare, and support for underprivileged children and communities.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                    How can I donate?
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    You can donate through our website using PayPal, credit card, or bank transfer. We also accept physical donations at our offices.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                    Can I volunteer?
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Yes! We welcome volunteers to help with our charity programs. You can sign up on our website or visit our office.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                    Where does my donation go?
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Your donation directly funds educational programs, medical aid, and food supplies for underprivileged communities. We ensure full transparency with our impact reports.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                    Is my donation tax-deductible?
+                </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Yes! We are a registered non-profit organization, and your donation may be tax-deductible. Please check with your local tax authority for details.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSix">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix">
+                    How can I stay updated on your work?
+                </button>
+            </h2>
+            <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    You can subscribe to our newsletter, follow us on social media, or check our website for the latest updates on our initiatives.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSeven">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven">
+                    Can I donate in someone else's name?
+                </button>
+            </h2>
+            <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Absolutely! You can make a donation in honor of someone and even request a personalized thank-you certificate.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingEight">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight">
+                    Do you provide receipts for donations?
+                </button>
+            </h2>
+            <div id="collapseEight" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Yes! You will receive an email confirmation with your donation receipt. If you need a printed receipt, please contact us.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingNine">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine">
+                    Can I partner with your charity?
+                </button>
+            </h2>
+            <div id="collapseNine" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    We welcome partnerships with businesses and individuals who want to support our cause. Please reach out via our contact page to discuss collaboration opportunities.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTen">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen">
+                    What other ways can I help?
+                </button>
+            </h2>
+            <div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Aside from donating, you can help by volunteering, sharing our mission on social media, attending fundraising events, or sponsoring a child.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+    
+
+<section id="contact">
+<!-- Contact Start -->
+<div class="contact">
+    <div class="container">
+        <div class="section-header text-center">
+            <p>Get In Touch</p>
+            <h2>Contact for any query</h2>
+        </div>
+        <div class="contact-img">
+            <img src="contact.jpg" alt="Image">
+        </div>
+        <div class="contact-form">
+                <div id="success"></div>
+                <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                    <div class="control-group">
+                        <input type="text" class="form-control" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="control-group">
+                        <input type="email" class="form-control" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="control-group">
+                        <input type="text" class="form-control" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="control-group">
+                        <textarea class="form-control" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div>
+                        <button class="btn btn-custom" type="submit" id="sendMessageButton">Send Message</button>
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>
+<!-- Contact End -->
+</div>
+</section>
+
+<!-- Footer Start -->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-contact">
+                    <h2>Our Home</h2>
+                    <p><i class="fa fa-map-marker-alt"></i>123 Street, Uganda, USA</p>
+                    <p><i class="fa fa-phone-alt"></i>+012 345 67890</p>
+                    <p><i class="fa fa-envelope"></i>info@example.com</p>
+                    <div class="footer-social">
+                        <a class="btn btn-custom" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-custom" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-custom" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-custom" href=""><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-custom" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-link">
+                    <h2>Popular Links</h2>
+                    <a href="">About Us</a>
+                    <a href="">Contact Us</a>
+                    <a href="">Popular Causes</a>
+                    <a href="">Upcoming Events</a>
+                    <a href="">Latest Blog</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-link">
+                    <h2>Useful Links</h2>
+                    <a href="">Terms of use</a>
+                    <a href="">Privacy policy</a>
+                    <a href="">Cookies</a>
+                    <a href="">Help</a>
+                    <a href="">FQAs</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-newsletter">
+                    <h2>Newsletter</h2>
+                    <form>
+                        <input class="form-control" placeholder="Email goes here">
+                        <button class="btn btn-custom">Submit</button>
+                        <label>Don't worry, we don't spam!</label>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container copyright">
+        <div class="row">
+            <div class="col-md-6">
+                <p>&copy; <a href="#">Young Support Foundtion</a>, All Right Reserved.</p>
+            </div>
+            <div class="col-md-6">
+                <p>Designed By Kin Technologies</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+ <!-- Back to top button -->
+ <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+ <!-- jQuery (Required for various plugins) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Slick Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+<!-- Owl Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<!-- AOS Animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init(); // Initialize AOS Animations
+</script>
+
+<!-- Custom Scripts -->
+<script src="jsd/bootstrap.min.js"></script>
+<script src="script.js"></script>
+<script src="srap.js"></script>
+<script src="test.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const mainVideo = document.querySelector(".main-video");
+
+    // Set main video source
+    mainVideo.src = "sup1.mp4";  // Change to your video file
+});
+
+</script>
+
+<!-- Lightbox Functionality -->
+<script>
+    function openLightbox(img) {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+
+    // Set the clicked image as the lightbox image
+    lightboxImg.src = img.src;
+    lightbox.classList.add("show");
+}
+
+function closeLightbox() {
+    document.getElementById("lightbox").classList.remove("show");
+}
+
+</script>
+
+<!-- Donation Alert -->
+<script>
+    function donate(amount) {
+        alert(`Thank you for your generous donation of $${amount}!`);
+    }
+</script>
+
+<!-- Slick Carousel Initialization -->
+<script>
+    $(document).ready(function(){
+        $('.volunteer-carousel').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            dots: true,
+            arrows: false,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });
+    });
+</script>
+
+<script>
+    const items = {
+        scholastic: [
+            { name: "Notebook", price: 3, image: "imgs/book.png" },
+            { name: "set", price: 5, image: "imgs/set.jpg" },
+            { name: "file", price: 15, image: "imgs/file.jpg" },
+            { name: "school bag", price: 5, image: "imgs/bag.jpg" }
+        ],
+        food: [
+            { name: "Rice Bag", price: 10, image: "imgs/rice.jpg" },
+            { name: "Beans Pack", price: 5, image: "imgs/beans.jpg" }
+        ],
+        clothes: [
+            { name: "T-Shirt", price: 8, image: "imgs/sat.jpg" },
+            { name: "Jacket", price: 15, image: "imgs/jac.jpg" }
+        ],
+        shoes: [
+            { name: "Sneakers", price: 20, image: "imgs/snea.jpg" },
+            { name: "Sandals", price: 12, image: "imgs/sand.png" }
+        ]
+    };
+
+    function showItems(category) {
+        const container = document.getElementById("itemsContainer");
+        container.innerHTML = "";
+        items[category].forEach(item => {
+            container.innerHTML += `
+                <div class="item" onclick="openForm('${item.name}', ${item.price})">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="support">Support</div>
+                </div>
+            `;
+        });
+    }
+
+    function openForm(itemName, itemPrice) {
+        document.getElementById("formTitle").innerText = `Donate for ${itemName}`;
+        document.getElementById("amount").value = `$${itemPrice}`;
+        document.getElementById("donationForm").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("donationForm").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+    }
+
+    function submitDonation() {
+        alert("Thank you for your support! ❤️");
+        closeForm();
+    }
+    // Automatically show the first category when the page loads
+document.addEventListener("DOMContentLoaded", function () {
+    showItems("scholastic"); // Default category
+});
+
+</script>
+
+<!-- Owl Carousel Initialization -->
+<script>
+    $(document).ready(function(){
+        $(".donors_featured").owlCarousel({
+            loop: true,  
+            margin: 20,  
+            nav: true,   
+            autoplay: true, 
+            autoplayTimeout: 3000, 
+            responsive: {
+                0: { items: 1 }, 
+                768: { items: 1 }, 
+                1024: { items: 1 } 
+            }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function(){
+    $(".causes .owl-carousel").owlCarousel({
+        loop: true,
+        margin: 30,
+        nav: true,
+        dots: false,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        responsive: {
+            0: { items: 1 },
+            600: { items: 2 },
+            1000: { items: 3 }
+        }
+    });
+});
+
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".progress-bar").forEach(function (bar) {
+        let percentage = bar.getAttribute("aria-valuenow");
+        bar.style.width = percentage + "%";
+    });
+});
+
+</script>
+
+<!-- Lightbox2 JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<script>
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true,
+        'alwaysShowNavOnTouchDevices': true
+    });
+
+    // Close lightbox when tapping anywhere outside the image
+    document.addEventListener('click', function(event) {
+        var lightboxOverlay = document.querySelector('.lightboxOverlay');
+        if (lightboxOverlay && event.target === lightboxOverlay) {
+            document.querySelector('.lightbox').style.display = 'none';
+            lightboxOverlay.style.display = 'none';
+        }
+    });
+</script>
+
+
+</body>
+</html>
+
